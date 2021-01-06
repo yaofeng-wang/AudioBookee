@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Profile</h2>
+<form action='' method='POST'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save changes">
+</form>
+
+<h2>My Listings</h2>
+<div class="row ">
+    {% for book in books%}
+    <div class="card" style="width: 18rem; height: 25rem; margin:5px; border-color: black; border-width:5px">
+        <img src="{{ book.image.url }}" style="width: 100%; height: 15rem; " class="card-img-top"
+            alt="{{ book.image.url }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text">SGD ${{ book.price }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
