@@ -1,0 +1,63 @@
+body {
+    background-color: #ffffff;
+}
+
+.box {
+    background-color: white;
+    display: flex;
+    flex-flow: row wrap;
+    border-style: dotted;
+    width: 500px;
+    flex-basis: auto;
+    
+}
+.item {
+    background-color: white;
+    border-style: dotted;
+    flex:1 1 100px;
+}
+
+.card {
+    width: 250px; 
+    height: 350px; 
+    border-color: black;
+    border-width: 3px;
+    border-style: solid;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.card-img-top {
+    width: 100%; 
+    height: 200px;
+    border-style: solid;
+}
+
+.card-body {
+    border-style: solid;
+}
+
+.card-title {
+    border-style: solid;
+}
+
+.card-text {
+    border-style: solid;
+}
+
+.book-list {
+    border-style: solid;
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 30px;
+}
+
+.title {
+    margin-top: 30px;
+    border-style: solid;
+}
+
+.debug-target {
+    border-style: solid;
+    background-color: gold;
+}
