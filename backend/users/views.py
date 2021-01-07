@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 
 
 def userCreation(request):
-
     if request.method == 'POST':
         form = UserProfileForm(request.POST)
         if form.is_valid():
@@ -17,12 +16,9 @@ def userCreation(request):
             password = form.cleaned_data['password']
             UserProfile.objects.create_user(username=username,
                                             password=password)
-
             return redirect(to=reverse('create_user'))
-
     elif request.method == 'GET':
         form = UserProfileForm()
-
     return render(request,
                   'create_user.html',
                   context={'form': form})
@@ -64,12 +60,8 @@ def userLogin(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
-            print(username)
-            print(password)
             user = authenticate(username=username,
                                 password=password)
-            print(user)
-
             if user is not None:
                 login(request, user)
                 return redirect(to=reverse('home'))

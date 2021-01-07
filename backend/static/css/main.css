@@ -1,5 +1,11 @@
 body {
     background-color: #ffffff;
+    color: #000000;
+}
+
+a, a:hover, a:visited {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
 }
 
 .box {
@@ -9,8 +15,8 @@ body {
     border-style: dotted;
     width: 500px;
     flex-basis: auto;
-    
 }
+
 .item {
     background-color: white;
     border-style: dotted;
@@ -61,3 +67,4 @@ body {
     border-style: solid;
     background-color: gold;
 }
+

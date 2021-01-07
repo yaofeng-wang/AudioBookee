@@ -2,6 +2,7 @@
 from django.db import models
 from backend.settings import MEDIA_ROOT
 from users.models import UserProfile
+from django.urls import reverse
 
 
 class Book(models.Model):
@@ -15,3 +16,6 @@ class Book(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+    def get_absolute_url(self):
+        return reverse('display_book', args=[self.id])
