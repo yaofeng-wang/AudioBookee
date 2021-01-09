@@ -3,29 +3,17 @@ body {
     color: #000000;
 }
 
-a, a:hover, a:visited {
-    color: inherit; /* blue colors for links too */
-    text-decoration: inherit; /* no underline */
+.book-list a, a:hover, a:visited {
+    color: inherit; 
+    text-decoration: inherit; 
 }
 
-.box {
-    background-color: white;
-    display: flex;
-    flex-flow: row wrap;
-    border-style: dotted;
-    width: 500px;
-    flex-basis: auto;
-}
-
-.item {
-    background-color: white;
-    border-style: dotted;
-    flex:1 1 100px;
+.book-detail a, a:hover, a:visited {
+    color: inherit; 
+    text-decoration: inherit; 
 }
 
 .card {
-    width: 250px; 
-    height: 350px; 
     border-color: black;
     border-width: 3px;
     border-style: solid;
@@ -53,8 +41,6 @@ a, a:hover, a:visited {
 
 .book-list {
     border-style: solid;
-    display: flex;
-    flex-flow: row wrap;
     margin-bottom: 30px;
 }
 
@@ -66,5 +52,14 @@ a, a:hover, a:visited {
 .debug-target {
     border-style: solid;
     background-color: gold;
+}
+
+.book-detail {
+    border-style: solid;
+    
+}
+
+img {
+    border-style: solid;
 }
 

@@ -7,5 +7,4 @@ urlpatterns = [
     path('<int:id>/', displayUser, name="display_user"),
     path('login/', userLogin, name="login_user"),
     path('logout/', userLogout, name="logout_user"),
-
 ]

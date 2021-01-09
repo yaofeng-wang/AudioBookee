@@ -16,11 +16,15 @@
             {{user.username}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'display_user' user.id %}">Update Profile</a>
+            <a class="dropdown-item" href="{% url 'display_user' user.id %}">My Profile</a>
+            <a class="dropdown-item" href="{% url 'display_purchases' user.id %}">Buying history</a>
+            <a class="dropdown-item" href="{% url 'display_orders' user.id %}">Selling history</a>
             <a class="dropdown-item" href="{% url 'logout_user' %}">Logout</a>
           </div>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cart' %}">Cart</a>
+        </li>
       </ul>
     </div>
     {% else %}

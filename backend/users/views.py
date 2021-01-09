@@ -6,6 +6,7 @@ from django.db.models import Model
 from django.contrib.auth import authenticate, login, logout
 from books.models import Book
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 
 def userCreation(request):
@@ -54,9 +55,6 @@ def userLogin(request):
                       {'form': form})
     elif request.method == 'POST':
         form = LoginForm(request.POST)
-
-        print(form.is_valid())
-
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
@@ -69,6 +67,7 @@ def userLogin(request):
     return redirect(to=reverse('login_user'))
 
 
+@login_required
 def userLogout(request):
     logout(request)
     return redirect(to=reverse('home'))
