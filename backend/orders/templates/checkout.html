@@ -1,12 +1,27 @@
-<div class="container book-list">
-    {% if orders %}
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row" style="border-style: solid;">
+        <div class="col ">
+            <h1>Checkout</h1>
+        </div>
+        <div class="col-2 my-auto">
+            <form class="spacer" action="{% url 'make_payment' %}" method="post">
+                {% csrf_token %}
+                <input class="btn btn-primary" type="submit" value="Make Payment" />
+            </form>
+        </div>
+    </div>
 
     {% for order in orders %}
-    <div class="row" style="border-style:solid;">
+    <div class=" row" style="border-style: solid;">
         <div class="col-3">
             <img class="card-img-top" src="{{ order.product.image.url }}" alt="{{ order.product.image.url }}">
         </div>
-        <div class="col-9 d-flex flex-col align-items-center">
+        <div class="col-7 d-flex flex-col align-items-center">
             <table>
                 <tr>
                     <td>Title:</td>
@@ -35,15 +50,18 @@
             </table>
         </div>
 
+        <div class="col-2 mt-auto">
+            <p> Sub-total: SGD${{ order.get_total_cost }}</p>
+        </div>
+
     </div>
     {% endfor %}
-
-
-    {% else %}
-    <div class="row" style="height:200px">
-        <div class="col d-flex flex-row justify-content-center align-items-center">
-            <h1>No item in cart yet :(</h1>
+    <div class="row justify-content-end align-items-end" style="border-style: solid; height:50px">
+        <div class="col-2">
+            <p>Total : {{ total }}</p>
         </div>
     </div>
-    {% endif %}
+
 </div>
+
+{% endblock content %}
