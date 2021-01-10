@@ -26,7 +26,6 @@
 
   {% include "footer.html" %}
 
-  <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -38,10 +37,11 @@
     integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
     crossorigin="anonymous"></script>
   <script type="text/javascript">
-    var user = '{{ user }}'
+    var user = "{{ user }}"
+    var updateOrderURL = "{% url 'update_order' %}"
+    var makePaymentURL = "{% url 'make_payment' %}"
   </script>
   <script src="{% static 'js/cart.js' %}"></script>
-
   </script>
 </body>
 

@@ -1,0 +1,49 @@
+<div class="container book-list">
+    {% if orders %}
+
+    {% for order in orders %}
+    <div class="row" style="border-style:solid;">
+        <div class="col-3">
+            <img class="card-img-top" src="{{ order.product.image.url }}" alt="{{ order.product.image.url }}">
+        </div>
+        <div class="col-9 d-flex flex-col align-items-center">
+            <table>
+                <tr>
+                    <td>Title:</td>
+                    <td>{{ order.product.title }}</td>
+                </tr>
+                <tr>
+                    <td>Cost:</td>
+                    <td>SGD ${{ order.product.price }}</td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td>{{ order.get_status_display | title }}</td>
+                </tr>
+                <tr>
+                    <td>Quantity:</td>
+                    <td>{{ order.quantity }}</td>
+                </tr>
+                <tr>
+                    <td>Created order:</td>
+                    <td>{{ order.creation_datetime }}</td>
+                </tr>
+                <tr>
+                    <td>Last update:</td>
+                    <td>{{ order.modification_datetime }}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    {% endfor %}
+
+
+    {% else %}
+    <div class="row" style="height:200px">
+        <div class="col d-flex flex-row justify-content-center align-items-center">
+            <h1>No item in cart yet :(</h1>
+        </div>
+    </div>
+    {% endif %}
+</div>

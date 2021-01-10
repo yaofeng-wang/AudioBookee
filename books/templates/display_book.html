@@ -16,15 +16,9 @@
             <button type="button" class="btn btn-primary" disabled>
                 Add to Cart
             </button>
-            <button type="button" class="btn btn-success" disabled>
-                Checkout
-            </button>
             {% else %}
             <button type="button" class="btn btn-primary update-cart" data-action="add" data-product="{{book.id}}">
                 Add to Cart
-            </button>
-            <button type="button" class="btn btn-success">
-                Checkout
             </button>
             {% endif %}
             {% endif %}
