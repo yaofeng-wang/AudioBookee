@@ -24,11 +24,11 @@ def userCreation(request):
             messages.error(request, "New user was not created.")
             return redirect(to=reverse('create_user'))
 
-    # GET method
-    form = UserProfileForm()
-    return render(request,
-                  'create_user.html',
-                  context={'form': form})
+    elif request.method == "GET":
+        form = UserProfileForm()
+        return render(request,
+                      'create_user.html',
+                      context={'form': form})
 
 
 @login_required

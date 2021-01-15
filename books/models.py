@@ -28,10 +28,4 @@ class Book(models.Model):
         # save instance to create image in static folder
         super().save(*args, **kwargs)
 
-        # standardise size of image
-    #     self._resize_image()
-
-    # def _resize_image(self):
-    #     with Image.open(self.image.path) as image:
-    #         image = image.resize((self.IMAGE_WIDTH, self.IMAGE_HEIGHT))
-    #         image.save(self.image.path)
+        # image re-sizing temporarily removed
