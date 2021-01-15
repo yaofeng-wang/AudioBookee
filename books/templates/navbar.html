@@ -17,6 +17,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{% url 'display_user' user.id %}">My Profile</a>
+            <a class="dropdown-item" href="{% url 'display_listings' %}">My Listings</a>
             <a class="dropdown-item" href="{% url 'display_purchases' user.id %}">Buying history</a>
             <a class="dropdown-item" href="{% url 'display_orders' user.id %}">Selling history</a>
             <a class="dropdown-item" href="{% url 'logout_user' %}">Logout</a>
@@ -30,6 +31,9 @@
     {% else %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'create_user' %}">Register</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'login_user' %}">Login</a>
         </li>

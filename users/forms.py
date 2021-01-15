@@ -11,7 +11,7 @@ class UserProfileForm(forms.ModelForm):
             'username': forms.TextInput(
                 attrs={'placeholder': 'Username'}),
             'password': forms.PasswordInput(
-                attrs={'placeholder': 'Password'})
+                attrs={'placeholder': 'Password'}),
         }
 
 

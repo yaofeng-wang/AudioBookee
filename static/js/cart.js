@@ -45,20 +45,3 @@ for (var i = 0; i < updateButtons.length; i++) {
         });
     })
 }
-
-// // get all "Make payment" buttons
-// var makePaymentButtons = document.getElementsByClassName('make-payment');
-
-// // add event listener to each button
-// for (var i = 0; i < makePaymentButtons.length; i++) {
-//     makePaymentButtons[i].addEventListener('click', (event) => {
-//         fetch(makePaymentURL, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'X-CSRFToken': csrftoken,
-//             },
-//             body: JSON.stringify({})
-//         });
-//     })
-// }

@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
-from .forms import UserProfileForm, LoginForm, UpdateProfileForm
 from django.urls import reverse
-from .models import UserProfile
 from django.db.models import Model
 from django.contrib.auth import authenticate, login, logout
-from books.models import Book
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.contrib import messages
+
+from books.models import Book
+from .models import UserProfile
+from .forms import UserProfileForm, LoginForm, UpdateProfileForm
 
 
 def userCreation(request):
@@ -17,9 +18,14 @@ def userCreation(request):
             password = form.cleaned_data['password']
             UserProfile.objects.create_user(username=username,
                                             password=password)
+            messages.success(request, "New user was created!")
+            return redirect(to=reverse('login_user'))
+        else:
+            messages.error(request, "New user was not created.")
             return redirect(to=reverse('create_user'))
-    elif request.method == 'GET':
-        form = UserProfileForm()
+
+    # GET method
+    form = UserProfileForm()
     return render(request,
                   'create_user.html',
                   context={'form': form})
@@ -27,32 +33,28 @@ def userCreation(request):
 
 @login_required
 def displayUser(request, id):
-    try:
-        if request.method == 'GET':
-            user = UserProfile.objects.get(id=id)
-            form = UpdateProfileForm(initial={'username': user.username})
-        elif request.method == 'POST':
-            user = UserProfile.objects.get(id=id)
-            form = UpdateProfileForm(request.POST)
-            if not form.is_valid():
-                return redirect(to=reverse('display_user', id=id))
-            username = form.cleaned_data['username'] if form.cleaned_data['username'] else user.username
+    user = UserProfile.objects.get(id=id)
 
-            user.username = username
-            user.save()
-        books = Book.objects.filter(seller=id)
-    except:
-        return redirect(to=reverse('home'))
-    context = {'form': form, 'books': books}
+    if request.method == 'GET':
+        form = UserProfileForm(initial={'username': user.username})
+
+    elif request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+
+    context = {
+        'form': form,
+    }
     return render(request, 'display_user.html', context)
 
 
 def userLogin(request):
-    print(request.method)
     if request.method == 'GET':
         form = LoginForm()
         return render(request, 'login.html',
                       {'form': form})
+
     elif request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -60,14 +62,29 @@ def userLogin(request):
             password = form.cleaned_data.get('password')
             user = authenticate(username=username,
                                 password=password)
-            if user is not None:
+            if user is None:
+                messages.error(request, 'Invalid login credentials.')
+                return redirect(to=reverse('login_user'))
+            else:
                 login(request, user)
+                messages.success(request, f'Welcome back, {user.username}!')
                 return redirect(to=reverse('home'))
-
-    return redirect(to=reverse('login_user'))
+        else:
+            messages.error(request, 'Invalid login credentials.')
+            return redirect(to=reverse('login_user'))
 
 
 @login_required
 def userLogout(request):
     logout(request)
+    messages.success(request, f'Good-bye!')
     return redirect(to=reverse('home'))
+
+
+@login_required
+def userListings(request):
+    books = Book.objects.filter(seller=request.user)
+    context = {
+        'books': books,
+    }
+    return render(request, 'display_listings.html', context)

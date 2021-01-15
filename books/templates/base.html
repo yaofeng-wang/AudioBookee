@@ -19,11 +19,16 @@
 </head>
 
 <body>
+
   {% include "navbar.html" %}
+  <main>
+    <div class="container">
+      {% include "message.html" %}
 
-  {% block content %}
-  {% endblock content %}
-
+      {% block content %}
+      {% endblock %}
+    </div>
+  </main>
   {% include "footer.html" %}
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

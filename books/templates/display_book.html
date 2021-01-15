@@ -13,9 +13,13 @@
             <p>Seller:<a href="{% url 'display_user' book.seller.id %}"> {{ book.seller }}</a></p>
             {% if user.is_authenticated %}
             {% if user == book.seller %}
-            <button type="button" class="btn btn-primary" disabled>
-                Add to Cart
-            </button>
+            <a href="{% url 'update_book' book.id %}" style="color:white" class="btn btn-success"> Update </a>
+
+            <form action="{% url 'delete_book' book.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary form-control"> Delete</button>
+            </form>
+
             {% else %}
             <button type="button" class="btn btn-primary update-cart" data-action="add" data-product="{{book.id}}">
                 Add to Cart
