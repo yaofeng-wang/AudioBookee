@@ -6,7 +6,7 @@
                 <a href="{{ book.get_absolute_url }}">
                     <img class="card-img-top" src="{{ book.thumbnail.url }}" alt="{{ book.thumbnail.url }}">
                     <div class="card-body">
-                        <div class="card-text">{{ book.title }}</div>
+                        <div class="card-text" style="height:50px">{{ book.title }}</div>
                         <div class="card-text">SGD ${{ book.price }}</div>
                     </div>
                 </a>

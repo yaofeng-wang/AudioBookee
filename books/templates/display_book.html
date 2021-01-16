@@ -11,7 +11,7 @@
         <div class="col-6 container d-flex flex-column justify-content-center">
             <p>Title: {{ book.title }}</p>
             <p>Price: SGD ${{ book.price }}</p>
-            <p>Seller:<a href="{% url 'display_user' book.seller.id %}"> {{ book.seller }}</a></p>
+            <p>Seller:<a href="#"> {{ book.seller }}</a></p>
             {% if user.is_authenticated %}
             {% if user == book.seller %}
             <a href="{% url 'update_book' book.id %}" style="color:white" class="btn btn-success"> Update </a>

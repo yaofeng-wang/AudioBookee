@@ -15,8 +15,10 @@ class Book(models.Model):
     price = models.DecimalField(max_digits=10,
                                 decimal_places=2)
     # resize image only if it is larger than 300 x 400
+    # a smaller version of original image
     thumbnail = ResizedImageField(
         size=[300, 400], upload_to='books', quality=75, force_format='JPEG')
+    # original image
     image = models.ImageField(upload_to='books')
 
     def __str__(self):

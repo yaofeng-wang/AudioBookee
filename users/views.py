@@ -10,7 +10,7 @@ from .models import UserProfile
 from .forms import UserProfileForm, LoginForm, UpdateProfileForm
 
 
-def userCreation(request):
+def createUser(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST)
         if form.is_valid():
@@ -32,21 +32,33 @@ def userCreation(request):
 
 
 @login_required
-def displayUser(request, id):
+def updateUser(request, id):
+    if id != request.user.id:
+        messages.error(request, 'Unable to go to update page')
+        return redirect(reverse('home'))
+
     user = UserProfile.objects.get(id=id)
 
     if request.method == 'GET':
         form = UserProfileForm(initial={'username': user.username})
 
     elif request.method == 'POST':
+
         form = UserProfileForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
 
+        # change password if the password field is not empty
+        # this ensures new password is hashed before saving
+        if request.POST['password']:
+            user.set_password(request.POST['password'])
+            user.save()
+            messages.success(request, "Password sucessfully updated")
+
     context = {
         'form': form,
     }
-    return render(request, 'display_user.html', context)
+    return render(request,  'update_user.html', context)
 
 
 def userLogin(request):
