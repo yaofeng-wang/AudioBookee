@@ -4,6 +4,8 @@ __pycache__/
 *.png
 *.jpeg
 *.jpg
+*.mp3
+www/
 migrations/
 todo.txt
 settings.py
