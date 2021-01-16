@@ -7,3 +7,4 @@ __pycache__/
 migrations/
 todo.txt
 settings.py
+secrets.sh
