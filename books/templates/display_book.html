@@ -5,12 +5,29 @@
 <div class="container book-detail my-5">
     <div class="row">
         <div class="col-6"">
-            <img class=" m-2" src=" {{ book.image.url }}" style="width:100%;" alt="{{ book.image.url }}">
+            <img class=" m-2" src=" {{ book.thumbnail.url }}" style="height:500px; width:100%;"
+            alt="{{ book.thumbnail.url }}">
         </div>
         <div class="col-6 container d-flex flex-column justify-content-center">
-            <p>Title: {{ book.title }}</p>
-            <p>Price: SGD ${{ book.price }}</p>
-            <p>Seller:<a href="{% url 'display_user' book.seller.id %}"> {{ book.seller }}</a></p>
+            <table>
+                <tr>
+                    <td>Title: </td>
+                    <td> {{ book.title }} </td>
+                </tr>
+                <tr>
+                    <td>Price: </td>
+                    <td> SGD ${{ book.price }} </td>
+                </tr>
+                <tr>
+                    <td>Seller: </td>
+                    <td><a href="#"> {{ book.seller }}</a></td>
+                </tr>
+                <tr>
+                    <td>Sample: </td>
+                    <td> {{ book.audio_player }} </td>
+                </tr>
+            </table>
+
             {% if user.is_authenticated %}
             {% if user == book.seller %}
             <a href="{% url 'update_book' book.id %}" style="color:white" class="btn btn-success"> Update </a>

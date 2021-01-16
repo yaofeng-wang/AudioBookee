@@ -9,7 +9,7 @@
         </div>
         <div class="col-1 my-auto">
             {% if orders %}
-            <a class="btn btn-primary" href="{% url 'checkout' %}">Checkout</a>
+            <a class="btn btn-primary" style="color:white" href="{% url 'checkout' %}">Checkout</a>
             {% endif %}
         </div>
     </div>
@@ -17,7 +17,6 @@
 
 <div class="container book-list">
     {% if orders %}
-
     {% for order in orders %}
     <div class="row" style="border-style:solid;">
         <div class="col-3">
@@ -52,8 +51,8 @@
             </table>
         </div>
         <div class="col-1">
-            <button class="btn btn-primary update-cart" type="button" data-action="remove"
-                data-product="{{ order.product.id }}" class="close" aria-label="Close">
+            <button class="btn update-cart" type="button" data-action="remove" data-product="{{ order.product.id }}"
+                class="close" aria-label="Close">
                 &times;
             </button>
         </div>

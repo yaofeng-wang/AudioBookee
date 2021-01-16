@@ -16,7 +16,7 @@
             {{user.username}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'display_user' user.id %}">My Profile</a>
+            <a class="dropdown-item" href="{% url 'update_user' user.id %}">My Profile</a>
             <a class="dropdown-item" href="{% url 'display_listings' %}">My Listings</a>
             <a class="dropdown-item" href="{% url 'display_purchases' user.id %}">Buying history</a>
             <a class="dropdown-item" href="{% url 'display_orders' user.id %}">Selling history</a>
