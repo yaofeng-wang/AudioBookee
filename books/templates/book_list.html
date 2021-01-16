@@ -4,7 +4,7 @@
         <div class="col-3 d-flex justify-content-center">
             <div class="card">
                 <a href="{{ book.get_absolute_url }}">
-                    <img class="card-img-top" src="{{ book.image.url }}" alt="{{ book.image.url }}">
+                    <img class="card-img-top" src="{{ book.thumbnail.url }}" alt="{{ book.thumbnail.url }}">
                     <div class="card-body">
                         <div class="card-text">{{ book.title }}</div>
                         <div class="card-text">SGD ${{ book.price }}</div>

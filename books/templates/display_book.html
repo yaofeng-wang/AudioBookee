@@ -5,7 +5,8 @@
 <div class="container book-detail my-5">
     <div class="row">
         <div class="col-6"">
-            <img class=" m-2" src=" {{ book.image.url }}" style="width:100%;" alt="{{ book.image.url }}">
+            <img class=" m-2" src=" {{ book.thumbnail.url }}" style="height:500px; width:100%;"
+            alt="{{ book.thumbnail.url }}">
         </div>
         <div class="col-6 container d-flex flex-column justify-content-center">
             <p>Title: {{ book.title }}</p>
