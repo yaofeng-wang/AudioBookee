@@ -4,5 +4,4 @@ __pycache__/
 www/
 migrations/
 todo.txt
-settings.py
 secrets.sh
