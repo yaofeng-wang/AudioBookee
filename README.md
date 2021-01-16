@@ -2,6 +2,19 @@
 
 This is an online marketplace for users to buy and sell audio books.
 
+### Home page
+![home_page.png](https://github.com/yaofeng-wang/AudioBookee/blob/main/project_images/home_page.png)
+
+### Display book
+![display_book.png](https://github.com/yaofeng-wang/AudioBookee/blob/main/project_images/display_book.png)
+
+### Cart page
+![cart.png](https://github.com/yaofeng-wang/AudioBookee/blob/main/project_images/cart.png)
+
+### Checkout page
+![checkout.png](https://github.com/yaofeng-wang/AudioBookee/blob/main/project_images/checkout.png)
+
+
 Current features
 1. Users can register, login, and logout.
 2. Users can edit their profile and listings (audio books that they are selling).
